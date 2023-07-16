@@ -41,7 +41,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.editTask = exports.deleteTask = exports.toggleTaskStatus = exports.createTask = exports.getTasksForToday = exports.getAllCompletedTasks = exports.getAllTasksByCategory = exports.getAllTasks = void 0;
 var task_model_1 = __importDefault(require("../models/task-model"));
-//getting all tasks 
 var getAllTasks = function (request, response) { return __awaiter(void 0, void 0, void 0, function () {
     var userId, tasks, error_1;
     return __generator(this, function (_a) {
@@ -66,7 +65,6 @@ var getAllTasks = function (request, response) { return __awaiter(void 0, void 0
     });
 }); };
 exports.getAllTasks = getAllTasks;
-// getting tasks by category
 var getAllTasksByCategory = function (request, response) { return __awaiter(void 0, void 0, void 0, function () {
     var userId, id, tasks, error_2;
     return __generator(this, function (_a) {
@@ -93,7 +91,6 @@ var getAllTasksByCategory = function (request, response) { return __awaiter(void
     });
 }); };
 exports.getAllTasksByCategory = getAllTasksByCategory;
-// get all completed tasks
 var getAllCompletedTasks = function (request, response) { return __awaiter(void 0, void 0, void 0, function () {
     var userId, tasks, error_3;
     return __generator(this, function (_a) {
@@ -119,7 +116,6 @@ var getAllCompletedTasks = function (request, response) { return __awaiter(void 
     });
 }); };
 exports.getAllCompletedTasks = getAllCompletedTasks;
-// get tasks for today
 var getTasksForToday = function (request, response) { return __awaiter(void 0, void 0, void 0, function () {
     var userId, todaysISODate, tasks, error_4;
     return __generator(this, function (_a) {
@@ -147,7 +143,6 @@ var getTasksForToday = function (request, response) { return __awaiter(void 0, v
     });
 }); };
 exports.getTasksForToday = getTasksForToday;
-// create task
 var createTask = function (request, response) { return __awaiter(void 0, void 0, void 0, function () {
     var userId, _a, name_1, date, categoryId, task, error_5;
     return __generator(this, function (_b) {
@@ -176,7 +171,6 @@ var createTask = function (request, response) { return __awaiter(void 0, void 0,
     });
 }); };
 exports.createTask = createTask;
-// toogle status for task
 var toggleTaskStatus = function (request, response) { return __awaiter(void 0, void 0, void 0, function () {
     var isCompleted, id, task, error_6;
     return __generator(this, function (_a) {
@@ -204,7 +198,6 @@ var toggleTaskStatus = function (request, response) { return __awaiter(void 0, v
     });
 }); };
 exports.toggleTaskStatus = toggleTaskStatus;
-// delete task
 var deleteTask = function (request, response) { return __awaiter(void 0, void 0, void 0, function () {
     var id, error_7;
     return __generator(this, function (_a) {
@@ -229,7 +222,6 @@ var deleteTask = function (request, response) { return __awaiter(void 0, void 0,
     });
 }); };
 exports.deleteTask = deleteTask;
-// update task
 var editTask = function (request, response) { return __awaiter(void 0, void 0, void 0, function () {
     var _a, _id, categoryId, date, name_2, error_8;
     return __generator(this, function (_b) {

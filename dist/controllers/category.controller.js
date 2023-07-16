@@ -39,9 +39,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateCategory = exports.deleteCategory = exports.createCategory = exports.getAllCategories = void 0;
+exports.updateCategory = exports.deleteCategory = exports.createCategory = exports.getCategoryById = exports.getAllCategories = void 0;
 var category_model_1 = __importDefault(require("../models/category-model"));
-// get all categories
+var task_model_1 = __importDefault(require("../models/task-model"));
 var getAllCategories = function (request, response) { return __awaiter(void 0, void 0, void 0, function () {
     var user, categories, error_1;
     return __generator(this, function (_a) {
@@ -65,9 +65,38 @@ var getAllCategories = function (request, response) { return __awaiter(void 0, v
     });
 }); };
 exports.getAllCategories = getAllCategories;
-// creating category
+/**
+ *
+ * @param request TODO: Record get category by id
+ * @param response
+ * @returns
+ */
+var getCategoryById = function (request, response) { return __awaiter(void 0, void 0, void 0, function () {
+    var user, id, category, error_2;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                user = request.user;
+                id = request.params.id;
+                return [4 /*yield*/, category_model_1.default.findOne({
+                        _id: id,
+                    })];
+            case 1:
+                category = _a.sent();
+                return [2 /*return*/, response.send(category)];
+            case 2:
+                error_2 = _a.sent();
+                response.send({ error: "Something went wrong" });
+                console.log("error in getAllCategories", error_2);
+                throw error_2;
+            case 3: return [2 /*return*/];
+        }
+    });
+}); };
+exports.getCategoryById = getCategoryById;
 var createCategory = function (request, response) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, color, icon, name_1, user, category, error_2;
+    var _a, color, icon, name_1, user, category, error_3;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
@@ -85,42 +114,45 @@ var createCategory = function (request, response) { return __awaiter(void 0, voi
                 response.send(category);
                 return [3 /*break*/, 3];
             case 2:
-                error_2 = _b.sent();
-                console.log("error in createCategory", error_2);
+                error_3 = _b.sent();
+                console.log("error in createCategory", error_3);
                 response.send({ error: "Something went wrong" });
-                throw error_2;
-            case 3: return [2 /*return*/];
-        }
-    });
-}); };
-exports.createCategory = createCategory;
-//delete category
-var deleteCategory = function (request, response) { return __awaiter(void 0, void 0, void 0, function () {
-    var id, category, error_3;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                _a.trys.push([0, 2, , 3]);
-                id = request.params.id;
-                return [4 /*yield*/, category_model_1.default.deleteOne({
-                        _id: id,
-                    })];
-            case 1:
-                category = _a.sent();
-                response.send({ message: "Category deleted successfully" });
-                return [3 /*break*/, 3];
-            case 2:
-                error_3 = _a.sent();
-                response.send({ error: "Error in deleting the category", details: error_3.message });
                 throw error_3;
             case 3: return [2 /*return*/];
         }
     });
 }); };
+exports.createCategory = createCategory;
+var deleteCategory = function (request, response) { return __awaiter(void 0, void 0, void 0, function () {
+    var id, category, error_4;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 3, , 4]);
+                id = request.params.id;
+                return [4 /*yield*/, task_model_1.default.deleteMany({
+                        categoryId: id,
+                    })];
+            case 1:
+                _a.sent();
+                return [4 /*yield*/, category_model_1.default.deleteOne({
+                        _id: id,
+                    })];
+            case 2:
+                category = _a.sent();
+                response.send({ message: "Category deleted successfully" });
+                return [3 /*break*/, 4];
+            case 3:
+                error_4 = _a.sent();
+                response.send({ error: "Error in deleting the category" });
+                throw error_4;
+            case 4: return [2 /*return*/];
+        }
+    });
+}); };
 exports.deleteCategory = deleteCategory;
-// update ctagory
 var updateCategory = function (request, response) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, _id, color, icon, isEditable, name_2, error_4;
+    var _a, _id, color, icon, isEditable, name_2, error_5;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
@@ -141,10 +173,10 @@ var updateCategory = function (request, response) { return __awaiter(void 0, voi
                 response.send({ message: "Category updated successfully" });
                 return [3 /*break*/, 3];
             case 2:
-                error_4 = _b.sent();
-                console.log("error in updateCategory", error_4);
+                error_5 = _b.sent();
+                console.log("error in updateCategory", error_5);
                 response.send({ error: "Error in updating the category" });
-                throw error_4;
+                throw error_5;
             case 3: return [2 /*return*/];
         }
     });
