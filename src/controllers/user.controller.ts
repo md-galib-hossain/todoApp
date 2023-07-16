@@ -3,7 +3,7 @@ import { Request, Response } from "express"
 import jwt from "jsonwebtoken"
 import { Types } from "mongoose"
 import User from "../models/user-model"
-import {IUser} from "../types"
+import { IUser } from "../types"
 
 const getUserToken = (_id: string | Types.ObjectId) => {
   const authenticatedUserToken = jwt.sign({ _id }, "express", {

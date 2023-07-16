@@ -3,9 +3,6 @@ import { AuthRequest } from "../middleware"
 import Task from "../models/task-model"
 import { ITask } from "../types"
 
-
-//getting all tasks 
-
 export const getAllTasks = async (request: AuthRequest, response: Response) => {
   try {
     const userId = request.user
@@ -19,8 +16,6 @@ export const getAllTasks = async (request: AuthRequest, response: Response) => {
     throw error
   }
 }
-
-// getting tasks by category
 
 export const getAllTasksByCategory = async (
   request: AuthRequest,
@@ -40,7 +35,6 @@ export const getAllTasksByCategory = async (
     throw error
   }
 }
-// get all completed tasks
 
 export const getAllCompletedTasks = async (
   request: AuthRequest,
@@ -59,8 +53,6 @@ export const getAllCompletedTasks = async (
     throw error
   }
 }
-
-// get tasks for today
 
 export const getTasksForToday = async (
   request: AuthRequest,
@@ -82,7 +74,6 @@ export const getTasksForToday = async (
   }
 }
 
-// create task
 export const createTask = async (request: AuthRequest, response: Response) => {
   try {
     const userId = request.user
@@ -102,7 +93,6 @@ export const createTask = async (request: AuthRequest, response: Response) => {
   }
 }
 
-// toogle status for task
 export const toggleTaskStatus = async (
   request: AuthRequest,
   response: Response
@@ -126,7 +116,6 @@ export const toggleTaskStatus = async (
     throw error
   }
 }
-// delete task
 
 export const deleteTask = async (request: AuthRequest, response: Response) => {
   try {
@@ -142,7 +131,6 @@ export const deleteTask = async (request: AuthRequest, response: Response) => {
   }
 }
 
-// update task
 export const editTask = async (request: AuthRequest, response: Response) => {
   try {
     const { _id, categoryId, date, name }: ITask = request.body
