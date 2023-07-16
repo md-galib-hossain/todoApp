@@ -2,5 +2,9 @@
     "compilerOptions": {
         "esModuleInterop": true,
         "outDir": "./dist"
-    }
+    },
+    "exclude": [
+        "node_modules",
+        "todoApp/node_modules/react-native-svg"
+      ]
 }
